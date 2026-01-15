@@ -13,14 +13,15 @@
 #hero-section {
   background-image:    linear-gradient(
       to bottom,
-      rgba(255, 255, 255, 0) 90%,
-      rgba(255, 255, 255, 0.9) 100%
+      rgba(255, 255, 255, 0) 85%,
+      rgb(255, 255, 255) 100%
     ), url("/hero.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
   height: 110vh;
+  border: none;
 }
 
 .container{
@@ -70,20 +71,16 @@
   background-color: var(--blur-inherit);
 }
 
-/* Focus zamanı */
 .search-bar:focus {
   border-color: #96999c;
   box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.15);
 }
-
-/* Placeholder stili */
 .search-bar::placeholder {
   color: var(--description-color);
   font-size: 0.9rem;
 }
 
 
-/* Responsive */
 @media (max-width: 768px) {
   .search-bar {
     width: 180px;

@@ -1,5 +1,7 @@
 import Image from "next/image";
 import "./globals.css";
+import WhyChoosing from "@/components/Sections/ChoosingSection/WhyChoosing";
+import SellingSection from "@/components/Sections/SellingSection/SellingSection";
 
 export default function Home() {
   return (
@@ -16,23 +18,8 @@ minimalistic & modern</h1>
     </div>
 
   </section>
-
-  <section id="four">
-    <div className="four-container">
-      <div className="four-item"> 
-        </div>
-      <div className="four-item"> 
-        </div>
-      <div className="four-item"> 
-        </div>
-      <div className="four-item"> 
-        </div>
-      <div className="four-item"> 
-        </div>
-
-    </div>
-    
-  </section>
+  <WhyChoosing/>
+  <SellingSection/>
   </>
   );
 }

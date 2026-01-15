@@ -1,0 +1,44 @@
+#four{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+}
+.four-container{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+.four-item{
+    width: 30%;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding: 10px 20px;
+    gap: 25px;
+
+
+}
+.four-item h1{
+    width: 70%;
+    font-size: 38px;
+    font-weight: bold;
+}
+.four-item h3{
+    font-size: 23px;
+    font-weight: 500;
+}
+.four-item p{
+    width: 80%;
+    color: gray;
+}
+.four-item span{
+    color: rgb(255, 174, 0);
+}
+
