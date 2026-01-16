@@ -4,6 +4,7 @@ import WhyChoosing from "@/components/Sections/ChoosingSection/WhyChoosing";
 import SellingSection from "@/components/Sections/SellingSection/SellingSection";
 import Expierences from "@/components/Sections/Expierences/Expierences";
 import Materials from "@/components/Sections/Materials/Materials";
+import Testimonials from "@/components/Sections/Testimonials/Testimonials";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ minimalistic & modern</h1>
   <SellingSection/>
   <Expierences/>
   <Materials/>
+  <Testimonials/>
   </>
   );
 }
