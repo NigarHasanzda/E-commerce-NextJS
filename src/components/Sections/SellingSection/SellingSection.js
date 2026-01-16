@@ -32,12 +32,9 @@ const SellingSection = () => {
   return (
     <section className="!bg-[#F7F7F7] !py-20 !px-4 sm:!px-6 lg:!px-10">
       <div className="!max-w-[80%] !mx-auto">
-        {/* Title */}
         <h2 className="!text-center !text-[22px] sm:!text-[26px] lg:!text-[30px] !font-bold !mb-8">
           Best Selling Product
         </h2>
-
-        {/* Tabs */}
         <div className="!flex !justify-center !mb-14">
           <div className="!bg-[#EEEEEE] !rounded-full !p-1 !flex !gap-2">
             {["Chair", "Beds", "Sofa", "Lamp"].map((item, i) => (
@@ -54,15 +51,12 @@ const SellingSection = () => {
             ))}
           </div>
         </div>
-
-        {/* Products */}
         <div className="!grid !grid-cols-1 sm:!grid-cols-2 lg:!grid-cols-4 !gap-8">
           {chairs.map((item, index) => (
   <div
     key={index}
     className="!rounded-[24px] !shadow-sm hover:!shadow-md !transition"
   >
-    {/* Image */}
     <div className="!flex !justify-center !mb-6 !p-6">
       <img
         src={item.img}
@@ -71,7 +65,6 @@ const SellingSection = () => {
       />
     </div>
 
-    {/* 🔽 AŞAĞI HİSSƏ (BG VERƏ BİLƏRSƏN) */}
     <div className="!bg-[#ffffff] !p-6 !rounded-b-[24px]">
       
       <span className="!text-gray-400 !text-sm">
@@ -81,8 +74,6 @@ const SellingSection = () => {
       <h3 className="!font-semibold !text-[16px] !mt-1 !mb-2">
         {item.name}
       </h3>
-
-      {/* Rating */}
       <div className="!flex !gap-1 !mb-4">
         {Array(5)
           .fill(0)
@@ -90,8 +81,6 @@ const SellingSection = () => {
             <span key={i} className="!text-orange-400">★</span>
           ))}
       </div>
-
-      {/* Price + Button */}
       <div className="!flex !items-center !justify-between">
         <span className="!font-bold !text-[18px]">
           ${item.price}
@@ -107,10 +96,8 @@ const SellingSection = () => {
 
         </div>
       </div>
-
-      {/* View All */}
       <span className="!block !mx-auto !my-[20px] !text-center !text-[16px] !text-orange-500">
-        View All--
+        View All
       </span>
     </section>
   );

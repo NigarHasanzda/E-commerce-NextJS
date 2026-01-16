@@ -2,6 +2,7 @@ import Image from "next/image";
 import "./globals.css";
 import WhyChoosing from "@/components/Sections/ChoosingSection/WhyChoosing";
 import SellingSection from "@/components/Sections/SellingSection/SellingSection";
+import Expierences from "@/components/Sections/Expierences/Expierences";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ minimalistic & modern</h1>
   </section>
   <WhyChoosing/>
   <SellingSection/>
+  <Expierences/>
   </>
   );
 }
