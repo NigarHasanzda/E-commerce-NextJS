@@ -1,3 +1,4 @@
+import FadeInFromBottom from "@/components/FadeInWhenVisible/FadeFromBottom";
 import "../../../app/globals.css";
 import React from "react";
 
@@ -53,16 +54,10 @@ const SellingSection = () => {
         </div>
         <div className="!grid !grid-cols-1 sm:!grid-cols-2 lg:!grid-cols-4 !gap-8">
           {chairs.map((item, index) => (
-  <div
-    key={index}
-    className="!rounded-[24px] !shadow-sm hover:!shadow-md !transition"
-  >
+            <FadeInFromBottom key={index}>
+               <div  className="!rounded-[24px] !shadow-sm hover:!shadow-md !transition" >
     <div className="!flex !justify-center !mb-6 !p-6">
-      <img
-        src={item.img}
-        alt={item.name}
-        className="!w-[160px] !h-[180px] !object-contain"
-      />
+      <img  src={item.img}  alt={item.name}  className="!w-[160px] !h-[180px] !object-contain"/>
     </div>
 
     <div className="!bg-[#ffffff] !p-6 !rounded-b-[24px]">
@@ -92,12 +87,14 @@ const SellingSection = () => {
       </div>
     </div>
   </div>
+            </FadeInFromBottom>
 ))}
 
         </div>
       </div>
       <span className="!block !mx-auto !my-[20px] !text-center !text-[16px] !text-orange-500">
         View All
+        <span className="!text-[18px]">→</span>
       </span>
     </section>
   );
