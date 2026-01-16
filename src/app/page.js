@@ -3,6 +3,7 @@ import "./globals.css";
 import WhyChoosing from "@/components/Sections/ChoosingSection/WhyChoosing";
 import SellingSection from "@/components/Sections/SellingSection/SellingSection";
 import Expierences from "@/components/Sections/Expierences/Expierences";
+import Materials from "@/components/Sections/Materials/Materials";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ minimalistic & modern</h1>
   <WhyChoosing/>
   <SellingSection/>
   <Expierences/>
+  <Materials/>
   </>
   );
 }
