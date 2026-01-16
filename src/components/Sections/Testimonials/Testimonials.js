@@ -1,3 +1,4 @@
+import FadeInFromBottom from '@/components/FadeInWhenVisible/FadeFromBottom';
 import React from 'react';
 
 const Testimonials = () => {
@@ -34,23 +35,15 @@ const Testimonials = () => {
   return (
     <section className="py-20 bg-white font-sans">
       <div className="container mx-auto px-4">
-        {/* Başlıq hissəsi */}
         <div className="text-center mb-16">
           <h4 className="text-orange-500 uppercase tracking-widest text-sm font-bold mb-2">Testimonials</h4>
           <h2 className="text-4xl font-bold text-gray-900">Our Client Reviews</h2>
         </div>
-
-        {/* Kartların siyahısı */}
         <div className="flex flex-wrap justify-center gap-8 relative">
-          
-          {/* Sol ox (Navigation) */}
-          {/* <button className="absolute left-0 top-1/2 -translate-y-12 z-10 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition-all">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-          </button> */}
-
           {reviews.map((item) => (
-            <div 
-              key={item.id} 
+           <FadeInFromBottom key={item.id} >
+             <div 
+              
               className="w-[370px] h-[480px] rounded-[30px] overflow-hidden relative shadow-xl"
               style={{ 
                 backgroundImage: `url(${item.bgImage})`, 
@@ -58,9 +51,7 @@ const Testimonials = () => {
                 backgroundPosition: 'center' 
               }}
             >
-              {/* Ağ kart hissəsi */}
               <div className="absolute bottom-5 left-5 right-5 bg-white rounded-2xl p-6 pt-12 text-center shadow-md">
-                {/* Profil şəkli */}
                 <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 rounded-full border-4 border-white overflow-hidden shadow-lg bg-gray-200">
                   <img src={item.profileImage} alt={item.name} className="w-full h-full object-cover" />
                 </div>
@@ -70,8 +61,7 @@ const Testimonials = () => {
                 <p className="text-gray-600 text-sm italic leading-relaxed mb-4">
                   "{item.comment}"
                 </p>
-                
-                {/* Ulduzlar */}
+            
                 <div className="flex justify-center gap-1">
                   {[...Array(5)].map((_, i) => (
                     <span key={i} className={i < item.stars ? "text-orange-400" : "text-gray-200"}>
@@ -81,12 +71,8 @@ const Testimonials = () => {
                 </div>
               </div>
             </div>
+           </FadeInFromBottom>
           ))}
-
-          {/* Sağ ox (Navigation) */}
-          {/* <button className="absolute right-0 top-1/2 -translate-y-12 z-10 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition-all">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </button> */}
 
         </div>
       </div>

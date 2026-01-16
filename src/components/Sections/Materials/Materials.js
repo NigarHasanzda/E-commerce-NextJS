@@ -1,3 +1,5 @@
+import FadeInLeftWhenVisible from '@/components/FadeInWhenVisible/FadeInLeftWhenVisible'
+import FadeInRightWhenVisible from '@/components/FadeInWhenVisible/FadeInWhenVisible'
 import React from 'react'
 
 const Materials = () => {
@@ -5,10 +7,9 @@ const Materials = () => {
   
     <section className="!w-full !py-[120px] !bg-white !flex !align-center !justify-center">
   <div className="!w-[90%] !mx-auto !px-4 !grid !grid-cols-1 lg:!grid-cols-2 !gap-[80px] !items-center">
-
-    {/* LEFT CONTENT */}
-    <div>
-      <p className="!text-[#E58411] !tracking-[0.2em] !uppercase !text-[14px] !font-medium !mb-4">
+    <div >
+     <FadeInLeftWhenVisible>
+       <p className="!text-[#E58411] !tracking-[0.2em] !uppercase !text-[14px] !font-medium !mb-4">
         Materials
       </p>
 
@@ -31,29 +32,36 @@ const Materials = () => {
         More Info
         <span className="!text-[18px]">→</span>
       </a>
+     </FadeInLeftWhenVisible>
     </div>
 
-    <div className="!relative !flex !gap-6">
+    <div className=" !relative !flex !gap-6">
 
-      <div className="!flex !flex-col !gap-[60px]">
-        <img
+      <div className="!flex !flex-col !gap-[10px]">
+        <FadeInLeftWhenVisible>
+          <img
           src="/img1.png"
           alt="material 1"
-          className="!w-[300px] !h-[290px] !object-cover !rounded-[20px]"
+          className="!w-[300px] !h-[260px] !object-cover !rounded-[20px]"
         />
+        </FadeInLeftWhenVisible>
 
-        <img
+        <FadeInLeftWhenVisible>
+          <img
           src="/img2.png"
           alt="material 2"
           className="!w-[300px] !h-[290px] !object-cover !rounded-[20px]"
         />
+        </FadeInLeftWhenVisible>
       </div>
 
-      <img
+      <FadeInRightWhenVisible>
+        <img
         src="/img3.png"
         alt="material 3"
-        className="!w-[550px] !h-[490px] !object-cover !rounded-[24px] !self-end !shadow-xl"
+        className="!w-[550px] !h-[560px] !object-cover !rounded-[24px] !self-end !shadow-xl"
       />
+      </FadeInRightWhenVisible>
     </div>
   </div>
 </section>
