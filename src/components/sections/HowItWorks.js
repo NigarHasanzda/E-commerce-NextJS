@@ -1,27 +1,12 @@
 "use client";
 
-import FadeInFromBottom from "@/components/FadeInWhenVisible/FadeFromBottom";
-import FadeInLeftWhenVisible from "@/components/FadeInWhenVisible/FadeInLeftWhenVisible";
-import FadeInRightWhenVisible from "@/components/FadeInWhenVisible/FadeInWhenVisible";
+import {
+  FadeInFromBottom,
+  FadeInLeftWhenVisible,
+  FadeInRightWhenVisible,
+} from "@/components/ui/animations";
+import { howItWorksSteps } from "@/data/home";
 import Link from "next/link";
-
-const steps = [
-  {
-    num: "01",
-    title: "Browse collections",
-    desc: "Explore chairs, tables, and lamps curated for a clean, modern interior.",
-  },
-  {
-    num: "02",
-    title: "Choose your piece",
-    desc: "Compare materials, ratings, and price—every product is selected for lasting quality.",
-  },
-  {
-    num: "03",
-    title: "Delivered to you",
-    desc: "Careful packaging and fast shipping so your space feels finished sooner.",
-  },
-];
 
 const HowItWorks = () => {
   return (
@@ -54,7 +39,7 @@ const HowItWorks = () => {
           </FadeInLeftWhenVisible>
 
           <div className="!flex !flex-col !gap-6">
-            {steps.map((step, index) => (
+            {howItWorksSteps.map((step, index) => (
               <FadeInRightWhenVisible key={step.num}>
                 <article className="!bg-white !rounded-[24px] !shadow-sm hover:!shadow-md !transition !p-6 sm:!p-8 !flex !gap-5 sm:!gap-6 !items-start">
                   <span className="!text-[#E58411] !text-[28px] !font-bold !leading-none !shrink-0">
@@ -67,7 +52,7 @@ const HowItWorks = () => {
                     <p className="!text-gray-500 !text-sm sm:!text-[15px] !leading-[1.65] !max-w-[400px]">
                       {step.desc}
                     </p>
-                    {index === steps.length - 1 && (
+                    {index === howItWorksSteps.length - 1 && (
                       <Link
                         href="/products"
                         className="!mt-2 !inline-flex !items-center !gap-[6px] !text-[rgb(255,174,0)] !font-medium !no-underline !text-sm hover:!gap-2 !transition-all"
@@ -85,7 +70,10 @@ const HowItWorks = () => {
 
         <FadeInFromBottom>
           <p className="!text-center !text-[16px] !text-[#ff8a00]">
-            <Link href="/products" className="!text-inherit !no-underline hover:!opacity-80">
+            <Link
+              href="/products"
+              className="!text-inherit !no-underline hover:!opacity-80"
+            >
               View All
               <span className="!text-[18px]">→</span>
             </Link>

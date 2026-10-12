@@ -1,11 +1,12 @@
 "use client";
 
-import FadeInFromBottom from "@/components/FadeInWhenVisible/FadeFromBottom";
-import FadeInLeftWhenVisible from "@/components/FadeInWhenVisible/FadeInLeftWhenVisible";
-import FadeInRightWhenVisible from "@/components/FadeInWhenVisible/FadeInWhenVisible";
+import {
+  FadeInFromBottom,
+  FadeInLeftWhenVisible,
+  FadeInRightWhenVisible,
+} from "@/components/ui/animations";
+import { newsletterPerks } from "@/data/home";
 import { useState } from "react";
-
-const perks = ["New arrivals", "Interior tips", "Member-only deals"];
 
 const Newsletter = () => {
   const [email, setEmail] = useState("");
@@ -36,7 +37,7 @@ const Newsletter = () => {
                 to your inbox, the same calm tone as our interiors.
               </p>
               <ul className="!flex !flex-wrap !gap-3 !mt-2">
-                {perks.map((item) => (
+                {newsletterPerks.map((item) => (
                   <li
                     key={item}
                     className="!px-4 !py-2 !rounded-full !bg-[#EEEEEE] !text-gray-600 !text-sm"

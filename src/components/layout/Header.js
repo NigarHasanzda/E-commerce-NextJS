@@ -9,10 +9,17 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import StorefrontIcon from "@mui/icons-material/Storefront";
+import { mainNavLinks } from "@/data/navigation";
 import { siteName } from "@/lib/site";
 
+const headerActions = [
+  { Icon: FavoriteIcon, label: "Wishlist" },
+  { Icon: ShoppingCartIcon, label: "Shopping cart" },
+  { Icon: AccountCircleIcon, label: "Account" },
+];
+
 const Header = () => {
-  const pathname = usePathname(); 
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -26,11 +33,12 @@ const Header = () => {
   }, []);
 
   const alwaysDarkBg = pathname === "/products";
+  const onDarkHeader = alwaysDarkBg || scrolled;
 
   return (
     <header
       className={`!fixed !top-0 !w-full !z-[1000] !transition-all !duration-300
-        ${alwaysDarkBg ? "!bg-[#1F2124] !shadow-lg" : scrolled ? "!bg-[#1F2124] !shadow-lg" : "!bg-transparent"}
+        ${onDarkHeader ? "!bg-[#1F2124] !shadow-lg" : "!bg-transparent"}
       `}
     >
       <div className="!max-w-[1200px] !mx-auto !px-4 !py-3 !flex !items-center !justify-between">
@@ -38,7 +46,7 @@ const Header = () => {
           <Link
             href="/"
             aria-label={`${siteName} home`}
-            className={`!flex !items-center !gap-2 !no-underline ${alwaysDarkBg || scrolled ? "!text-white" : "!text-[#dddddd]"}`}
+            className={`!flex !items-center !gap-2 !no-underline ${onDarkHeader ? "!text-white" : "!text-[#dddddd]"}`}
           >
             <StorefrontIcon
               className="!text-[1.75rem] !shrink-0 !text-[#E58411]"
@@ -48,25 +56,22 @@ const Header = () => {
           </Link>
         </div>
         <nav
-          className={`!flex !items-center !gap-8  max-md:!fixed max-md:!top-0 max-md:!left-0 max-md:!h-screen max-md:!w-[260px]  max-md:!bg-white max-md:!flex-col max-md:!items-start  max-md:!pt-20 max-md:!pl-6 max-md:!gap-6  max-md:!transition-transform max-md:!duration-300  ${mobileMenuOpen ? "max-md:!translate-x-0" : "max-md:!-translate-x-full"}  `} >
-          {["Home", "Products", "About"].map((item) => (
+          className={`!flex !items-center !gap-8  max-md:!fixed max-md:!top-0 max-md:!left-0 max-md:!h-screen max-md:!w-[260px]  max-md:!bg-white max-md:!flex-col max-md:!items-start  max-md:!pt-20 max-md:!pl-6 max-md:!gap-6  max-md:!transition-transform max-md:!duration-300  ${mobileMenuOpen ? "max-md:!translate-x-0" : "max-md:!-translate-x-full"}  `}
+        >
+          {mainNavLinks.map(({ label, href }) => (
             <Link
-              key={item}
-              href={`/${item === "Home" ? "" : item.toLowerCase()}`}
-              className={`!font-medium !no-underline !transition
-                ${alwaysDarkBg || scrolled ? "!text-white hover:!text-[#ffcc80]" : "!text-[#dddddd] hover:!text-[#E58411]"}
+              key={href}
+              href={href}
+              className={`!font-medium !no-underline !transition max-md:!text-[#1E1E1E]
+                ${onDarkHeader ? "!text-white hover:!text-[#ffcc80]" : "!text-[#dddddd] hover:!text-[#E58411]"}
               `}
             >
-              {item}
+              {label}
             </Link>
           ))}
         </nav>
         <div className="!flex !items-center !gap-4">
-          {[
-            { Icon: FavoriteIcon, label: "Wishlist" },
-            { Icon: ShoppingCartIcon, label: "Shopping cart" },
-            { Icon: AccountCircleIcon, label: "Account" },
-          ].map(({ Icon, label }) => (
+          {headerActions.map(({ Icon, label }) => (
             <button
               key={label}
               type="button"
@@ -75,7 +80,7 @@ const Header = () => {
             >
               <Icon
                 className={`!cursor-pointer !transition !text-[26px]
-                  ${alwaysDarkBg || scrolled ? "!text-white hover:!text-[#ffcc80]" : "!text-[#dddddd] hover:!text-[#E58411] hover:!scale-110"}
+                  ${onDarkHeader ? "!text-white hover:!text-[#ffcc80]" : "!text-[#dddddd] hover:!text-[#E58411] hover:!scale-110"}
                 `}
               />
             </button>
@@ -85,13 +90,9 @@ const Header = () => {
             className="!hidden max-md:!block !cursor-pointer"
           >
             {mobileMenuOpen ? (
-              <CloseIcon
-                className={`!text-[28px] ${alwaysDarkBg || scrolled ? "!text-white" : "!text-[#dddddd]"}`}
-              />
+              <CloseIcon className="!text-[28px] !text-black" />
             ) : (
-              <MenuIcon
-                className={`!text-[28px] ${alwaysDarkBg || scrolled ? "!text-white" : "!text-[#dddddd]"}`}
-              />
+              <MenuIcon className="!text-[28px] !text-black" />
             )}
           </div>
         </div>

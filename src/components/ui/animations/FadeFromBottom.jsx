@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useRef, useState, useEffect } from "react";
 
 const FadeInFromBottom = ({ children, className = "", style = {} }) => {
@@ -27,7 +28,7 @@ const FadeInFromBottom = ({ children, className = "", style = {} }) => {
     opacity: isVisible ? 1 : 0,
     transform: isVisible ? "translateY(0)" : "translateY(20px)",
     transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
-    display: "inline-block", 
+    display: "inline-block",
     ...style,
   };
 
