@@ -1,5 +1,13 @@
 import "./globals.css";
 import WhyChoosing from "@/components/Sections/ChoosingSection/WhyChoosing";
+import SellingSection from "@/components/Sections/SellingSection/SellingSection";
+import Expierences from "@/components/Sections/Expierences/Expierences";
+import Materials from "@/components/Sections/Materials/Materials";
+import HowItWorks from "@/components/Sections/HowItWorks/HowItWorks";
+import Testimonials from "@/components/Sections/Testimonials/Testimonials";
+import Newsletter from "@/components/Sections/Newsletter/Newsletter";
+import FadeInFromBottom from "@/components/FadeInWhenVisible/FadeFromBottom";
+import FadeInLeftWhenVisible from "@/components/FadeInWhenVisible/FadeInLeftWhenVisible";
 import { siteName } from "@/lib/site";
 
 export const metadata = {
@@ -12,12 +20,6 @@ export const metadata = {
       "Turn your room into a minimalist, modern space with curated furniture and fast shopping.",
   },
 };
-import SellingSection from "@/components/Sections/SellingSection/SellingSection";
-import Expierences from "@/components/Sections/Expierences/Expierences";
-import Materials from "@/components/Sections/Materials/Materials";
-import Testimonials from "@/components/Sections/Testimonials/Testimonials";
-import FadeInFromBottom from "@/components/FadeInWhenVisible/FadeFromBottom";
-import FadeInLeftWhenVisible from "@/components/FadeInWhenVisible/FadeInLeftWhenVisible";
 
 export default function Home() {
   return (
@@ -66,7 +68,9 @@ export default function Home() {
   <SellingSection/>
   <Expierences/>
   <Materials/>
+  <HowItWorks/>
   <Testimonials/>
+  <Newsletter/>
   </>
   );
 }
