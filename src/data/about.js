@@ -24,7 +24,7 @@ export const aboutTimeline = [
   {
     year: "2018",
     title: "Started in a small studio",
-    desc: "Panto began as a passion project: fewer pieces, better curation.",
+    desc: "We began as a passion project: fewer pieces, better curation.",
   },
   {
     year: "2021",
