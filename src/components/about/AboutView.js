@@ -5,42 +5,15 @@ import {
   FadeInLeftWhenVisible,
   FadeInRightWhenVisible,
 } from "@/components/ui/animations";
+import AboutPageHeader from "@/components/about/AboutPageHeader";
 import { aboutStats, aboutTimeline, aboutValues } from "@/data/about";
-import { siteFooterBlurb, siteName } from "@/lib/site";
+import { siteName } from "@/lib/site";
 import Link from "next/link";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 const AboutView = () => {
   return (
     <>
-      <section className="!w-full !bg-[#F7F7F7] !pt-[108px] !pb-10 !px-4">
-        <div className="!max-w-[1400px] !mx-auto">
-          <nav
-            aria-label="Breadcrumb"
-            className="!flex !items-center !gap-1 !text-xs !text-gray-500 !mb-4"
-          >
-            <Link href="/" className="!text-[#E58411] !no-underline hover:!underline">
-              Home
-            </Link>
-            <ChevronRightIcon className="!text-[16px]" aria-hidden />
-            <span className="!text-gray-700 !font-medium">About</span>
-          </nav>
-
-          <FadeInFromBottom>
-            <div className="!max-w-[720px]">
-              <p className="!text-[#ff8a00] !uppercase !tracking-[0.2em] !text-xs !font-bold !mb-2">
-                About {siteName}
-              </p>
-              <h1 className="!text-[2rem] md:!text-[2.75rem] !font-bold !text-[#1E1E1E] !leading-[1.15] !mb-4">
-                We help you build rooms that feel quiet, modern, and yours.
-              </h1>
-              <p className="!text-gray-600 !leading-relaxed !text-base md:!text-lg">
-                {siteFooterBlurb}
-              </p>
-            </div>
-          </FadeInFromBottom>
-        </div>
-      </section>
+      <AboutPageHeader />
 
       <section className="!w-full !py-12 md:!py-16 !px-4 !bg-white">
         <div className="!max-w-[1400px] !mx-auto !grid !grid-cols-1 lg:!grid-cols-2 !gap-12 !items-center">

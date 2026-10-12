@@ -2,12 +2,23 @@
 
 import React, { useRef, useState, useEffect } from "react";
 
-const FadeInFromBottom = ({ children, className = "", style = {} }) => {
+const FadeInFromBottom = ({
+  children,
+  className = "",
+  style = {},
+  block = false,
+}) => {
   const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    if (!ref.current) return;
+    const node = ref.current;
+    if (!node) return;
+
+    if (typeof IntersectionObserver === "undefined") {
+      setIsVisible(true);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -16,10 +27,10 @@ const FadeInFromBottom = ({ children, className = "", style = {} }) => {
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.01, rootMargin: "0px 0px 80px 0px" }
     );
 
-    observer.observe(ref.current);
+    observer.observe(node);
 
     return () => observer.disconnect();
   }, []);
@@ -28,14 +39,17 @@ const FadeInFromBottom = ({ children, className = "", style = {} }) => {
     opacity: isVisible ? 1 : 0,
     transform: isVisible ? "translateY(0)" : "translateY(20px)",
     transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
-    display: "inline-block",
+    display: block ? "block" : "inline-block",
+    ...(block ? { width: "100%" } : {}),
     ...style,
   };
 
+  const Tag = block ? "div" : "span";
+
   return (
-    <span ref={ref} className={className} style={combinedStyle}>
+    <Tag ref={ref} className={className} style={combinedStyle}>
       {children}
-    </span>
+    </Tag>
   );
 };
 

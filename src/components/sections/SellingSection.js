@@ -33,7 +33,7 @@ const SellingSection = () => {
         </div>
         <div className="!grid !grid-cols-1 min-[480px]:!grid-cols-2 lg:!grid-cols-4 !gap-5 sm:!gap-6 md:!gap-8">
           {bestSellingProducts.map((item) => (
-            <FadeInFromBottom key={item.name}>
+            <FadeInFromBottom key={item.name} block>
               <div className="!rounded-[20px] sm:!rounded-[24px] !shadow-sm hover:!shadow-md !transition !h-full !flex !flex-col">
                 <div className="!flex !justify-center !p-4 sm:!p-6">
                   <img
