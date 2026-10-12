@@ -1,6 +1,17 @@
-import Image from "next/image";
 import "./globals.css";
 import WhyChoosing from "@/components/Sections/ChoosingSection/WhyChoosing";
+import { siteName } from "@/lib/site";
+
+export const metadata = {
+  title: "Home",
+  description:
+    "Make your interior more minimalistic and modern. Discover curated furniture and shop tables with ease at Panto.",
+  openGraph: {
+    title: `Home | ${siteName}`,
+    description:
+      "Turn your room into a minimalist, modern space with curated furniture and fast shopping.",
+  },
+};
 import SellingSection from "@/components/Sections/SellingSection/SellingSection";
 import Expierences from "@/components/Sections/Expierences/Expierences";
 import Materials from "@/components/Sections/Materials/Materials";

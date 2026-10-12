@@ -8,6 +8,8 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import StorefrontIcon from "@mui/icons-material/Storefront";
+import { siteName } from "@/lib/site";
 
 const Header = () => {
   const pathname = usePathname(); 
@@ -33,8 +35,16 @@ const Header = () => {
     >
       <div className="!max-w-[1200px] !mx-auto !px-4 !py-3 !flex !items-center !justify-between">
         <div className="!text-[1.6rem] !font-bold">
-          <Link href="/" className={`!no-underline ${alwaysDarkBg || scrolled ? "!text-white" : "!text-[#dddddd]"}`}>
-            MyEcom
+          <Link
+            href="/"
+            aria-label={`${siteName} home`}
+            className={`!flex !items-center !gap-2 !no-underline ${alwaysDarkBg || scrolled ? "!text-white" : "!text-[#dddddd]"}`}
+          >
+            <StorefrontIcon
+              className="!text-[1.75rem] !shrink-0 !text-[#E58411]"
+              aria-hidden
+            />
+            <span>{siteName}</span>
           </Link>
         </div>
         <nav
@@ -52,24 +62,36 @@ const Header = () => {
           ))}
         </nav>
         <div className="!flex !items-center !gap-4">
-          {[FavoriteIcon, ShoppingCartIcon, AccountCircleIcon].map(
-            (Icon, i) => (
+          {[
+            { Icon: FavoriteIcon, label: "Wishlist" },
+            { Icon: ShoppingCartIcon, label: "Shopping cart" },
+            { Icon: AccountCircleIcon, label: "Account" },
+          ].map(({ Icon, label }) => (
+            <button
+              key={label}
+              type="button"
+              aria-label={label}
+              className="!p-0 !m-0 !border-0 !bg-transparent !leading-none"
+            >
               <Icon
-                key={i}
                 className={`!cursor-pointer !transition !text-[26px]
                   ${alwaysDarkBg || scrolled ? "!text-white hover:!text-[#ffcc80]" : "!text-[#dddddd] hover:!text-[#E58411] hover:!scale-110"}
                 `}
               />
-            )
-          )}
+            </button>
+          ))}
           <div
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="!hidden max-md:!block !cursor-pointer"
           >
             {mobileMenuOpen ? (
-              <CloseIcon className="!text-[28px] !text-black" />
+              <CloseIcon
+                className={`!text-[28px] ${alwaysDarkBg || scrolled ? "!text-white" : "!text-[#dddddd]"}`}
+              />
             ) : (
-              <MenuIcon className="!text-[28px] !text-black" />
+              <MenuIcon
+                className={`!text-[28px] ${alwaysDarkBg || scrolled ? "!text-white" : "!text-[#dddddd]"}`}
+              />
             )}
           </div>
         </div>
