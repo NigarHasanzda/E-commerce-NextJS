@@ -2,6 +2,7 @@ import {
   FadeInFromBottom,
   FadeInLeftWhenVisible,
 } from "@/components/ui/animations";
+import { siteName } from "@/lib/site";
 
 const HeroSection = () => {
   return (
@@ -28,7 +29,7 @@ const HeroSection = () => {
 
           <p className="!text-[1.5rem] !w-[60%] !text-center !mx-auto !font-light !text-[var(--description-color)]">
             <FadeInFromBottom>
-              Turn your room with panto into a lot more minimalist and modern
+              Turn your room with {siteName} into a lot more minimalist and modern
               with ease and speed
             </FadeInFromBottom>
           </p>

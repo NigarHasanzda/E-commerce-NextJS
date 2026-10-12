@@ -1,7 +1,7 @@
 import React from "react";
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 import { footerLinkGroups, socialLinks } from "@/data/footer";
-import { siteName } from "@/lib/site";
+import { siteCopyrightYear, siteFooterBlurb, siteName } from "@/lib/site";
 
 const socialIcons = {
   facebook: FaFacebookF,
@@ -11,7 +11,7 @@ const socialIcons = {
 
 const Footer = () => {
   return (
-    <footer className="bg-[#F7F7F7] font-sans !important !px-[150px]  !py-[40px] !w-[100%]">
+    <footer className="bg-[#F7F7F7] font-sans !important !px-6 md:!px-[150px] !py-[40px] !w-[100%]">
       <div className=" !h-fit  mx-auto ">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
           <div className="md:col-span-1">
@@ -19,8 +19,7 @@ const Footer = () => {
               {siteName}
             </h2>
             <p className="text-gray-600 leading-relaxed text-sm max-w-[280px] !important">
-              The advantage of hiring a workspace with us is that givees you
-              comfortable service and all-around facilities.
+              {siteFooterBlurb}
             </p>
           </div>
 
@@ -66,7 +65,9 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-200 text-xs text-gray-500 !important">
-          <p>Copyright © 2021</p>
+          <p>
+            Copyright © {siteCopyrightYear} {siteName}
+          </p>
           <div className="flex gap-8 mt-4 md:mt-0">
             <a href="#" className="hover:text-gray-900 !important">
               Terms & Conditions

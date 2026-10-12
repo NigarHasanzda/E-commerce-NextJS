@@ -6,6 +6,7 @@ import {
   FadeInRightWhenVisible,
 } from "@/components/ui/animations";
 import { newsletterPerks } from "@/data/home";
+import { siteName } from "@/lib/site";
 import { useState } from "react";
 
 const Newsletter = () => {
@@ -30,7 +31,7 @@ const Newsletter = () => {
               </span>
               <h2 className="!text-[32px] sm:!text-[38px] lg:!text-[42px] !font-bold !leading-[1.2] !text-[#1e1e1e]">
                 Stay inspired with <br className="max-sm:!hidden" />
-                Panto updates
+                {siteName} updates
               </h2>
               <p className="!text-[#6b6b6b] !text-[16px] !leading-[1.8] !max-w-[480px]">
                 Get styling ideas and early access to collections—delivered quietly

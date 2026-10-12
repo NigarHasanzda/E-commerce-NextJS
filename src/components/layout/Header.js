@@ -32,8 +32,7 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const alwaysDarkBg = pathname === "/products";
-  const onDarkHeader = alwaysDarkBg || scrolled;
+  const onDarkHeader = scrolled;
 
   return (
     <header
@@ -58,17 +57,33 @@ const Header = () => {
         <nav
           className={`!flex !items-center !gap-8  max-md:!fixed max-md:!top-0 max-md:!left-0 max-md:!h-screen max-md:!w-[260px]  max-md:!bg-white max-md:!flex-col max-md:!items-start  max-md:!pt-20 max-md:!pl-6 max-md:!gap-6  max-md:!transition-transform max-md:!duration-300  ${mobileMenuOpen ? "max-md:!translate-x-0" : "max-md:!-translate-x-full"}  `}
         >
-          {mainNavLinks.map(({ label, href }) => (
-            <Link
-              key={href}
-              href={href}
-              className={`!font-medium !no-underline !transition max-md:!text-[#1E1E1E]
-                ${onDarkHeader ? "!text-white hover:!text-[#ffcc80]" : "!text-[#dddddd] hover:!text-[#E58411]"}
-              `}
-            >
-              {label}
-            </Link>
-          ))}
+          {mainNavLinks.map(({ label, href }) => {
+            const isActive =
+              href === "/"
+                ? pathname === "/"
+                : href.startsWith("/#")
+                  ? pathname === "/" && false
+                  : pathname === href || pathname.startsWith(`${href}/`);
+
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={`!font-medium !no-underline !transition
+                  max-md:!text-[#1E1E1E] max-md:hover:!text-[#E58411]
+                  ${
+                    isActive
+                      ? "md:!text-[#ffcc80] md:!underline md:!underline-offset-4"
+                      : onDarkHeader
+                        ? "md:!text-white md:hover:!text-[#ffcc80]"
+                        : "md:!text-[#dddddd] md:hover:!text-[#E58411]"
+                  }
+                `}
+              >
+                {label}
+              </Link>
+            );
+          })}
         </nav>
         <div className="!flex !items-center !gap-4">
           {headerActions.map(({ Icon, label }) => (
@@ -90,9 +105,13 @@ const Header = () => {
             className="!hidden max-md:!block !cursor-pointer"
           >
             {mobileMenuOpen ? (
-              <CloseIcon className="!text-[28px] !text-black" />
+              <CloseIcon
+                className={`!text-[28px] ${onDarkHeader ? "!text-white" : "!text-[#1E1E1E]"}`}
+              />
             ) : (
-              <MenuIcon className="!text-[28px] !text-black" />
+              <MenuIcon
+                className={`!text-[28px] ${onDarkHeader ? "!text-white" : "!text-[#1E1E1E]"}`}
+              />
             )}
           </div>
         </div>

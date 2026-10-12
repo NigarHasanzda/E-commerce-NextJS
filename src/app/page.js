@@ -14,7 +14,7 @@ import { siteName } from "@/lib/site";
 export const metadata = {
   title: "Home",
   description:
-    "Make your interior more minimalistic and modern. Discover curated furniture and shop tables with ease at Panto.",
+    `Make your interior more minimalistic and modern. Discover curated furniture and shop with ease at ${siteName}.`,
   openGraph: {
     title: `Home | ${siteName}`,
     description:

@@ -49,7 +49,7 @@ export const metadata = {
     "glass tables",
     "metal furniture",
     "e-commerce",
-    "Panto",
+    siteName,
   ],
   authors: [{ name: siteName }],
   creator: siteName,

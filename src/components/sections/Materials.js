@@ -2,6 +2,7 @@ import {
   FadeInLeftWhenVisible,
   FadeInRightWhenVisible,
 } from "@/components/ui/animations";
+import { siteName } from "@/lib/site";
 
 const Materials = () => {
   return (
@@ -20,9 +21,9 @@ const Materials = () => {
             </h2>
 
             <p className="!text-[#7C7C7C] !max-w-[420px] !mb-6">
-              Because panto was very serious about designing furniture for our
-              environment, using a very expensive and famous capital but at a
-              relatively low price
+              {siteName} takes material choice seriously—premium woods and
+              finishes selected for lasting quality, offered at a fair price for
+              modern homes.
             </p>
 
             <a

@@ -1,16 +1,16 @@
 /** Static content for home page sections */
 export const whyChoosingItems = [
   {
-    title: "Luxury facilities",
-    desc: "The advantage of hiring a workspace with us is that gives you comfortable service and all-around facilities.",
+    title: "Curated collections",
+    desc: "Hand-picked furniture with clean lines and materials chosen for everyday comfort.",
   },
   {
-    title: "Luxury facilities",
-    desc: "The advantage of hiring a workspace with us is that gives you comfortable service and all-around facilities.",
+    title: "Fair pricing",
+    desc: "Premium look and build quality without the premium markup—you pay for the piece, not the hype.",
   },
   {
-    title: "Luxury facilities",
-    desc: "The advantage of hiring a workspace with us is that gives you comfortable service and all-around facilities.",
+    title: "Thoughtful delivery",
+    desc: "Careful packaging and support from checkout to your door, so your order arrives ready to enjoy.",
   },
 ];
 
