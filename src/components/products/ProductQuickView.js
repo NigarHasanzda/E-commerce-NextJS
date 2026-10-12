@@ -1,10 +1,12 @@
 "use client";
 
+import { useCart } from "@/context/CartProvider";
 import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const ProductQuickView = ({ product, onClose }) => {
+  const { addItem } = useCart();
   const [imgSrc, setImgSrc] = useState(product?.image || "/chair.png");
 
   useEffect(() => {
@@ -67,6 +69,7 @@ const ProductQuickView = ({ product, onClose }) => {
           {product.inStock ? (
             <button
               type="button"
+              onClick={() => addItem(product)}
               className="!mt-2 !w-full !py-3 !rounded-full !bg-[#1F2124] !text-white !font-semibold hover:!bg-[#E58411] !transition !border-0 !cursor-pointer"
             >
               Add to cart

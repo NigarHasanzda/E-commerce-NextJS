@@ -22,5 +22,11 @@ export default function sitemap() {
       changeFrequency: "monthly",
       priority: 0.6,
     },
+    {
+      url: `${siteUrl}/basket`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.3,
+    },
   ];
 }

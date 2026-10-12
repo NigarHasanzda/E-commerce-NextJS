@@ -9,19 +9,22 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import StorefrontIcon from "@mui/icons-material/Storefront";
+import { useCart } from "@/context/CartProvider";
 import { mainNavLinks } from "@/data/navigation";
 import { siteName } from "@/lib/site";
 
 const headerActions = [
-  { Icon: FavoriteIcon, label: "Wishlist" },
-  { Icon: ShoppingCartIcon, label: "Shopping cart" },
-  { Icon: AccountCircleIcon, label: "Account" },
+  { Icon: FavoriteIcon, label: "Wishlist", href: null },
+  { Icon: ShoppingCartIcon, label: "Shopping cart", href: "/basket" },
+  { Icon: AccountCircleIcon, label: "Account", href: null },
 ];
 
 const Header = () => {
   const pathname = usePathname();
+  const { itemCount, hydrated } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const cartCount = hydrated ? itemCount : 0;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,7 +35,8 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const onDarkHeader = scrolled;
+  const onDarkHeader =
+    scrolled || pathname === "/products" || pathname === "/basket";
 
   return (
     <header
@@ -86,20 +90,47 @@ const Header = () => {
           })}
         </nav>
         <div className="!flex !items-center !gap-4">
-          {headerActions.map(({ Icon, label }) => (
-            <button
-              key={label}
-              type="button"
-              aria-label={label}
-              className="!p-0 !m-0 !border-0 !bg-transparent !leading-none"
-            >
-              <Icon
-                className={`!cursor-pointer !transition !text-[26px]
-                  ${onDarkHeader ? "!text-white hover:!text-[#ffcc80]" : "!text-[#dddddd] hover:!text-[#E58411] hover:!scale-110"}
-                `}
-              />
-            </button>
-          ))}
+          {headerActions.map(({ Icon, label, href }) => {
+            const iconClass = `!transition !text-[26px]
+                  ${onDarkHeader ? "!text-white hover:!text-[#ffcc80]" : "!text-[#dddddd] hover:!text-[#E58411] hover:!scale-110"}`;
+
+            const inner = (
+              <>
+                <Icon className={`!cursor-pointer ${iconClass}`} />
+                {href === "/basket" && cartCount > 0 && (
+                  <span className="!absolute !-top-1 !-right-1 !min-w-[18px] !h-[18px] !px-1 !rounded-full !bg-[#E58411] !text-white !text-[10px] !font-bold !flex !items-center !justify-center">
+                    {cartCount > 99 ? "99+" : cartCount}
+                  </span>
+                )}
+              </>
+            );
+
+            if (href) {
+              return (
+                <Link
+                  key={label}
+                  href={href}
+                  aria-label={
+                    cartCount > 0 ? `${label}, ${cartCount} items` : label
+                  }
+                  className="!relative !p-0 !m-0 !leading-none !no-underline"
+                >
+                  {inner}
+                </Link>
+              );
+            }
+
+            return (
+              <button
+                key={label}
+                type="button"
+                aria-label={label}
+                className="!relative !p-0 !m-0 !border-0 !bg-transparent !leading-none"
+              >
+                {inner}
+              </button>
+            );
+          })}
           <div
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="!hidden max-md:!block !cursor-pointer"

@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import AppProviders from "@/components/providers/AppProviders";
 import { Footer, Header } from "@/components/layout";
 import { siteDescription, siteName, siteUrl } from "@/lib/site";
 
@@ -95,9 +96,11 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <Header />
-        <main className="flex-1 w-full min-w-0 overflow-x-clip">{children}</main>
-        <Footer />
+        <AppProviders>
+          <Header />
+          <main className="flex-1 w-full min-w-0 overflow-x-clip">{children}</main>
+          <Footer />
+        </AppProviders>
       </body>
     </html>
   );

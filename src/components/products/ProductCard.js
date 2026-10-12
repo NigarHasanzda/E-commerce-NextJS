@@ -1,5 +1,6 @@
 "use client";
 
+import { useCart } from "@/context/CartProvider";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Image from "next/image";
 import { useState } from "react";
@@ -14,8 +15,16 @@ const badgeStyles = {
 };
 
 const ProductCard = ({ product, onQuickView }) => {
+  const { addItem } = useCart();
   const [imgSrc, setImgSrc] = useState(product.image);
   const [wishlisted, setWishlisted] = useState(false);
+  const [addedPulse, setAddedPulse] = useState(false);
+
+  const handleAddToCart = () => {
+    addItem(product);
+    setAddedPulse(true);
+    window.setTimeout(() => setAddedPulse(false), 600);
+  };
 
   return (
     <article className="!group !bg-white !rounded-[24px] !shadow-sm hover:!shadow-lg !transition-all !duration-300 !overflow-hidden !flex !flex-col">
@@ -101,7 +110,10 @@ const ProductCard = ({ product, onQuickView }) => {
           {product.inStock ? (
             <button
               type="button"
-              className="!w-[42px] !h-[42px] !rounded-full !bg-[#0b132b] !text-white !flex !items-center !justify-center !text-xl hover:!scale-105 hover:!bg-[#E58411] !transition !border-0 !cursor-pointer"
+              onClick={handleAddToCart}
+              className={`!w-[42px] !h-[42px] !rounded-full !text-white !flex !items-center !justify-center !text-xl hover:!scale-105 !transition !border-0 !cursor-pointer ${
+                addedPulse ? "!bg-[#E58411]" : "!bg-[#0b132b] hover:!bg-[#E58411]"
+              }`}
               aria-label={`Add ${product.name} to cart`}
             >
               +
