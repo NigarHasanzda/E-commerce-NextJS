@@ -1,6 +1,8 @@
 "use client";
 
 import { useCart } from "@/context/CartProvider";
+import { useFavorites } from "@/context/FavoritesProvider";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Image from "next/image";
 import { useState } from "react";
@@ -16,9 +18,10 @@ const badgeStyles = {
 
 const ProductCard = ({ product, onQuickView }) => {
   const { addItem } = useCart();
+  const { isFavorite, toggleFavorite } = useFavorites();
   const [imgSrc, setImgSrc] = useState(product.image);
-  const [wishlisted, setWishlisted] = useState(false);
   const [addedPulse, setAddedPulse] = useState(false);
+  const wishlisted = isFavorite(product.id);
 
   const handleAddToCart = () => {
     addItem(product);
@@ -44,13 +47,15 @@ const ProductCard = ({ product, onQuickView }) => {
         <button
           type="button"
           aria-label={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
-          onClick={() => setWishlisted((v) => !v)}
-          className="!absolute !top-4 !right-4 !z-10 !w-9 !h-9 !rounded-full !bg-white/90 !shadow !flex !items-center !justify-center !border-0 !cursor-pointer hover:!scale-105 !transition !opacity-0 group-hover:!opacity-100 max-sm:!opacity-100"
+          onClick={() => toggleFavorite(product)}
+          className="!absolute !top-4 !right-4 !z-10 !w-9 !h-9 !rounded-full !bg-white/90 !shadow !flex !items-center !justify-center !border-0 !cursor-pointer hover:!scale-105 !transition"
           style={!product.inStock ? { top: "3.25rem" } : undefined}
         >
-          <FavoriteBorderIcon
-            className={`!text-[20px] ${wishlisted ? "!text-red-500" : "!text-gray-600"}`}
-          />
+          {wishlisted ? (
+            <FavoriteIcon className="!text-[20px] !text-red-500" />
+          ) : (
+            <FavoriteBorderIcon className="!text-[20px] !text-gray-600" />
+          )}
         </button>
 
         <Image
@@ -103,26 +108,51 @@ const ProductCard = ({ product, onQuickView }) => {
           </span>
         </div>
 
-        <div className="!flex !items-center !justify-between !mt-auto !pt-4">
+        <div className="!mt-auto !pt-4 !flex !flex-col !gap-3">
           <span className="!font-bold !text-[20px] !text-[#1E1E1E]">
             ${product.price}
           </span>
-          {product.inStock ? (
+          <div className="!flex !items-stretch !gap-2">
             <button
               type="button"
-              onClick={handleAddToCart}
-              className={`!w-[42px] !h-[42px] !rounded-full !text-white !flex !items-center !justify-center !text-xl hover:!scale-105 !transition !border-0 !cursor-pointer ${
-                addedPulse ? "!bg-[#E58411]" : "!bg-[#0b132b] hover:!bg-[#E58411]"
+              onClick={() => toggleFavorite(product)}
+              className={`!flex-1 !min-w-0 !inline-flex !items-center !justify-center !gap-1.5 !px-3 !py-2.5 !rounded-full !text-xs sm:!text-sm !font-semibold !border !cursor-pointer !transition ${
+                wishlisted
+                  ? "!border-red-200 !bg-[#FFF0F0] !text-red-600 hover:!bg-red-50"
+                  : "!border-gray-200 !bg-white !text-[#1E1E1E] hover:!border-red-200 hover:!text-red-500"
               }`}
-              aria-label={`Add ${product.name} to cart`}
             >
-              +
+              {wishlisted ? (
+                <>
+                  <FavoriteIcon className="!text-[18px]" />
+                  Saved
+                </>
+              ) : (
+                <>
+                  <FavoriteBorderIcon className="!text-[18px]" />
+                  Favorite
+                </>
+              )}
             </button>
-          ) : (
-            <span className="!text-xs !font-medium !text-gray-400">
-              Notify me
-            </span>
-          )}
+            {product.inStock ? (
+              <button
+                type="button"
+                onClick={handleAddToCart}
+                className={`!shrink-0 !w-[42px] !h-[42px] !rounded-full !text-white !flex !items-center !justify-center !text-xl hover:!scale-105 !transition !border-0 !cursor-pointer ${
+                  addedPulse
+                    ? "!bg-[#E58411]"
+                    : "!bg-[#0b132b] hover:!bg-[#E58411]"
+                }`}
+                aria-label={`Add ${product.name} to cart`}
+              >
+                +
+              </button>
+            ) : (
+              <span className="!shrink-0 !flex !items-center !px-3 !text-xs !font-medium !text-gray-400">
+                Sold out
+              </span>
+            )}
+          </div>
         </div>
       </div>
     </article>

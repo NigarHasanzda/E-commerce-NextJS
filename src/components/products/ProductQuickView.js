@@ -1,13 +1,18 @@
 "use client";
 
 import { useCart } from "@/context/CartProvider";
+import { useFavorites } from "@/context/FavoritesProvider";
 import CloseIcon from "@mui/icons-material/Close";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const ProductQuickView = ({ product, onClose }) => {
   const { addItem } = useCart();
+  const { isFavorite, toggleFavorite } = useFavorites();
   const [imgSrc, setImgSrc] = useState(product?.image || "/chair.png");
+  const favorited = product ? isFavorite(product.id) : false;
 
   useEffect(() => {
     setImgSrc(product?.image || "/chair.png");
@@ -66,11 +71,28 @@ const ProductQuickView = ({ product, onClose }) => {
             Material: <strong className="!text-gray-800">{product.material}</strong>
           </p>
           <p className="!text-3xl !font-bold !text-[#E58411]">${product.price}</p>
+          <button
+            type="button"
+            onClick={() => toggleFavorite(product)}
+            className="!inline-flex !items-center !justify-center !gap-2 !w-full !py-2.5 !rounded-full !border !border-gray-200 !bg-white !text-sm !font-medium !cursor-pointer hover:!border-red-200 !transition"
+          >
+            {favorited ? (
+              <>
+                <FavoriteIcon className="!text-red-500 !text-[20px]" />
+                Saved to favorites
+              </>
+            ) : (
+              <>
+                <FavoriteBorderIcon className="!text-gray-600 !text-[20px]" />
+                Add to favorites
+              </>
+            )}
+          </button>
           {product.inStock ? (
             <button
               type="button"
               onClick={() => addItem(product)}
-              className="!mt-2 !w-full !py-3 !rounded-full !bg-[#1F2124] !text-white !font-semibold hover:!bg-[#E58411] !transition !border-0 !cursor-pointer"
+              className="!w-full !py-3 !rounded-full !bg-[#1F2124] !text-white !font-semibold hover:!bg-[#E58411] !transition !border-0 !cursor-pointer"
             >
               Add to cart
             </button>

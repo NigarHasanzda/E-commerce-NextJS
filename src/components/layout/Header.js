@@ -10,21 +10,24 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import { useCart } from "@/context/CartProvider";
+import { useFavorites } from "@/context/FavoritesProvider";
 import { mainNavLinks } from "@/data/navigation";
 import { siteName } from "@/lib/site";
 
 const headerActions = [
-  { Icon: FavoriteIcon, label: "Wishlist", href: null },
-  { Icon: ShoppingCartIcon, label: "Shopping cart", href: "/basket" },
+  { Icon: FavoriteIcon, label: "Wishlist", href: "/favorites", badge: "favorites" },
+  { Icon: ShoppingCartIcon, label: "Shopping cart", href: "/basket", badge: "cart" },
   { Icon: AccountCircleIcon, label: "Account", href: null },
 ];
 
 const Header = () => {
   const pathname = usePathname();
-  const { itemCount, hydrated } = useCart();
+  const { itemCount: cartItemCount, hydrated: cartHydrated } = useCart();
+  const { itemCount: favCount, hydrated: favHydrated } = useFavorites();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const cartCount = hydrated ? itemCount : 0;
+  const cartCount = cartHydrated ? cartItemCount : 0;
+  const favoritesCount = favHydrated ? favCount : 0;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,7 +39,10 @@ const Header = () => {
   }, []);
 
   const onDarkHeader =
-    scrolled || pathname === "/products" || pathname === "/basket";
+    scrolled ||
+    pathname === "/products" ||
+    pathname === "/basket" ||
+    pathname === "/favorites";
 
   return (
     <header
@@ -90,16 +96,27 @@ const Header = () => {
           })}
         </nav>
         <div className="!flex !items-center !gap-4">
-          {headerActions.map(({ Icon, label, href }) => {
+          {headerActions.map(({ Icon, label, href, badge }) => {
             const iconClass = `!transition !text-[26px]
                   ${onDarkHeader ? "!text-white hover:!text-[#ffcc80]" : "!text-[#dddddd] hover:!text-[#E58411] hover:!scale-110"}`;
+
+            const badgeCount =
+              badge === "cart"
+                ? cartCount
+                : badge === "favorites"
+                  ? favoritesCount
+                  : 0;
 
             const inner = (
               <>
                 <Icon className={`!cursor-pointer ${iconClass}`} />
-                {href === "/basket" && cartCount > 0 && (
-                  <span className="!absolute !-top-1 !-right-1 !min-w-[18px] !h-[18px] !px-1 !rounded-full !bg-[#E58411] !text-white !text-[10px] !font-bold !flex !items-center !justify-center">
-                    {cartCount > 99 ? "99+" : cartCount}
+                {badgeCount > 0 && (
+                  <span
+                    className={`!absolute !-top-1 !-right-1 !min-w-[18px] !h-[18px] !px-1 !rounded-full !text-white !text-[10px] !font-bold !flex !items-center !justify-center ${
+                      badge === "favorites" ? "!bg-red-500" : "!bg-[#E58411]"
+                    }`}
+                  >
+                    {badgeCount > 99 ? "99+" : badgeCount}
                   </span>
                 )}
               </>
@@ -111,7 +128,7 @@ const Header = () => {
                   key={label}
                   href={href}
                   aria-label={
-                    cartCount > 0 ? `${label}, ${cartCount} items` : label
+                    badgeCount > 0 ? `${label}, ${badgeCount} items` : label
                   }
                   className="!relative !p-0 !m-0 !leading-none !no-underline"
                 >

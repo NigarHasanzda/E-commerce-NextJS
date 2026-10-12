@@ -1,7 +1,12 @@
 "use client";
 
 import { CartProvider } from "@/context/CartProvider";
+import { FavoritesProvider } from "@/context/FavoritesProvider";
 
 export default function AppProviders({ children }) {
-  return <CartProvider>{children}</CartProvider>;
+  return (
+    <CartProvider>
+      <FavoritesProvider>{children}</FavoritesProvider>
+    </CartProvider>
+  );
 }

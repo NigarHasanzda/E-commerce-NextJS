@@ -28,5 +28,11 @@ export default function sitemap() {
       changeFrequency: "weekly",
       priority: 0.3,
     },
+    {
+      url: `${siteUrl}/favorites`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.3,
+    },
   ];
 }
