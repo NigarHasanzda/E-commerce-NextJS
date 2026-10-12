@@ -6,21 +6,19 @@ import { siteName } from "@/lib/site";
 
 const Materials = () => {
   return (
-    <section className="!w-full !py-[120px] !bg-white !flex !align-center !justify-center">
-      <div className="!w-[90%] !mx-auto !px-4 !grid !grid-cols-1 lg:!grid-cols-2 !gap-[80px] !items-center">
-        <div>
+    <section className="!w-full !py-12 sm:!py-16 md:!py-20 lg:!py-28 !px-4 sm:!px-6 lg:!px-8 !bg-white">
+      <div className="!w-full !max-w-[1400px] !mx-auto !grid !grid-cols-1 lg:!grid-cols-2 !gap-10 md:!gap-12 lg:!gap-16 !items-center">
+        <div className="!text-center lg:!text-left">
           <FadeInLeftWhenVisible>
-            <p className="!text-[#E58411] !tracking-[0.2em] !uppercase !text-[14px] !font-medium !mb-4">
+            <p className="!text-[#E58411] !tracking-[0.2em] !uppercase !text-xs sm:!text-sm !font-medium !mb-3 sm:!mb-4">
               Materials
             </p>
 
-            <h2 className="!text-[40px] !leading-[1.2] !font-bold !text-[#1E1E1E] !mb-6">
-              Very Serious <br />
-              Materials For Making <br />
-              Furniture
+            <h2 className="!text-[1.75rem] sm:!text-[2rem] md:!text-[2.25rem] lg:!text-[2.5rem] !leading-[1.2] !font-bold !text-[#1E1E1E] !mb-4 sm:!mb-6">
+              Very Serious Materials For Making Furniture
             </h2>
 
-            <p className="!text-[#7C7C7C] !max-w-[420px] !mb-6">
+            <p className="!text-[#7C7C7C] !text-sm sm:!text-base !max-w-[420px] !mx-auto lg:!mx-0 !mb-5 sm:!mb-6">
               {siteName} takes material choice seriously—premium woods and
               finishes selected for lasting quality, offered at a fair price for
               modern homes.
@@ -28,7 +26,7 @@ const Materials = () => {
 
             <a
               href="#"
-              className="!inline-flex !items-center !gap-2 !text-[#E58411] !font-medium hover:!gap-4 !transition-all"
+              className="!inline-flex !items-center !gap-2 !text-[#E58411] !font-medium hover:!gap-4 !transition-all !text-sm sm:!text-base"
             >
               More Info
               <span className="!text-[18px]">→</span>
@@ -36,13 +34,13 @@ const Materials = () => {
           </FadeInLeftWhenVisible>
         </div>
 
-        <div className=" !relative !flex !gap-6 max-lg:!flex-col !items-center">
-          <div className="!flex !flex-col !gap-[10px]">
+        <div className="!relative !flex !flex-col md:!flex-row !gap-4 sm:!gap-6 !items-center !w-full">
+          <div className="!flex !flex-row md:!flex-col !gap-3 sm:!gap-4 !w-full md:!w-auto">
             <FadeInLeftWhenVisible>
               <img
                 src="/img1.png"
                 alt="Premium furniture material sample"
-                className="!w-[300px] !h-[260px] !object-cover !rounded-[20px]"
+                className="!w-1/2 md:!w-[min(100%,280px)] lg:!w-[300px] !aspect-[4/3] sm:!aspect-auto sm:!h-[200px] md:!h-[260px] !object-cover !rounded-[16px] sm:!rounded-[20px]"
               />
             </FadeInLeftWhenVisible>
 
@@ -50,7 +48,7 @@ const Materials = () => {
               <img
                 src="/img2.png"
                 alt="Wood texture for furniture"
-                className="!w-[300px] !h-[290px] !object-cover !rounded-[20px]"
+                className="!w-1/2 md:!w-[min(100%,280px)] lg:!w-[300px] !aspect-[4/3] sm:!aspect-auto sm:!h-[220px] md:!h-[290px] !object-cover !rounded-[16px] sm:!rounded-[20px]"
               />
             </FadeInLeftWhenVisible>
           </div>
@@ -59,7 +57,7 @@ const Materials = () => {
             <img
               src="/img3.png"
               alt="Finished furniture material detail"
-              className="!w-full !max-w-[550px] !h-[560px] !object-cover !rounded-[24px] !self-end !shadow-xl"
+              className="!w-full !max-w-[550px] !aspect-[4/5] sm:!aspect-auto sm:!h-[320px] md:!h-[420px] lg:!h-[560px] !object-cover !rounded-[20px] sm:!rounded-[24px] !shadow-xl"
             />
           </FadeInRightWhenVisible>
         </div>

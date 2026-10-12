@@ -10,24 +10,26 @@ const WhyChoosing = () => {
   return (
     <section
       id="why-choosing"
-      className="!w-full !flex !justify-center !py-[80px] max-[1024px]:!py-[60px] max-[640px]:!py-[40px]"
+      className="!w-full !flex !justify-center !py-10 sm:!py-14 md:!py-16 lg:!py-20 !px-4 sm:!px-6"
     >
-      <div className="!w-[90%] !max-w-[1500px] !grid !grid-cols-[1.2fr_1fr_1fr_1fr] !gap-[24px] max-[1200px]:!grid-cols-[1fr_1fr] max-[1200px]:!grid-rows-[auto_auto] max-[640px]:!grid-cols-1">
+      <div className="!w-full !max-w-[1400px] !grid !grid-cols-1 sm:!grid-cols-2 lg:!grid-cols-4 !gap-6 md:!gap-8">
         <FadeInLeftWhenVisible>
-          <div className="!min-h-[350px] !flex !flex-col !justify-center !px-[20px] !gap-[24px] max-[1200px]:!min-h-[260px] max-[640px]:!min-h-fit">
-            <h2 className="!max-w-[280px] !text-[38px] !font-bold !leading-[1.15] max-[1024px]:!text-[32px] max-[640px]:!text-[28px]">
-              Why <br /> Choosing Us
+          <div className="!flex !flex-col !justify-center !gap-4 sm:!col-span-2 lg:!col-span-1 lg:!min-h-[280px]">
+            <h2 className="!text-[1.75rem] sm:!text-[2rem] md:!text-[2.25rem] lg:!text-[2.375rem] !font-bold !leading-[1.15]">
+              Why <br className="max-sm:!hidden" /> Choosing Us
             </h2>
           </div>
         </FadeInLeftWhenVisible>
         {whyChoosingItems.map((item, index) => (
           <FadeInRightWhenVisible key={index}>
-            <div className="!min-h-[350px] !flex !flex-col !justify-center !px-[20px] !gap-[22px] max-[1200px]:!min-h-[260px] max-[640px]:!min-h-fit">
-              <h3 className="!text-[23px] !font-[500]">{item.title}</h3>
-              <p className="!max-w-[300px] !text-gray-500 !leading-[1.6] max-[640px]:!max-w-full">
+            <div className="!flex !flex-col !justify-center !gap-3 md:!gap-4 !py-2 lg:!min-h-[280px]">
+              <h3 className="!text-lg sm:!text-xl md:!text-[1.35rem] !font-medium">
+                {item.title}
+              </h3>
+              <p className="!text-gray-500 !text-sm sm:!text-base !leading-[1.6] !max-w-full">
                 {item.desc}
               </p>
-              <span className="!text-[rgb(255,174,0)] !cursor-pointer !inline-flex !items-center !gap-[6px]">
+              <span className="!text-[rgb(255,174,0)] !cursor-pointer !inline-flex !items-center !gap-[6px] !text-sm sm:!text-base">
                 More Info <span className="!text-[18px]">→</span>
               </span>
             </div>
