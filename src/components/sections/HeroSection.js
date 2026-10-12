@@ -1,45 +1,100 @@
+"use client";
+
 import {
   FadeInFromBottom,
   FadeInLeftWhenVisible,
 } from "@/components/ui/animations";
-import { siteName } from "@/lib/site";
+import { siteDescription, siteName } from "@/lib/site";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import Link from "next/link";
+
+const heroStats = [
+  { value: "200+", label: "Design pieces" },
+  { value: "4.9", label: "Avg. rating" },
+  { value: "48h", label: "Fast dispatch" },
+];
 
 const HeroSection = () => {
   return (
     <section
-      className="!w-full !min-h-[100svh] !flex !items-center !bg-cover !bg-center !bg-no-repeat !border-none !pt-24 !pb-12 sm:!pt-28 md:!pb-16"
-      style={{
-        backgroundImage: `
-      linear-gradient(
-        to bottom,
-        rgba(255,255,255,0) 85%,
-        rgb(255,255,255) 100%
-      ),
-      url('/hero.png')
-    `,
-      }}
+      className="!relative !w-full !min-w-0 !min-h-[480px] md:!min-h-[540px] lg:!min-h-[580px] !max-h-[780px] !flex !items-center !overflow-x-clip !pt-[96px] sm:!pt-[104px] !pb-10 md:!pb-14"
+      aria-labelledby="home-hero-title"
     >
-      <div className="!w-full !max-w-[1400px] !mx-auto !px-4 sm:!px-6 lg:!px-8">
-        <div className="!w-full !max-w-4xl !mx-auto !flex !flex-col !items-center !justify-center !gap-4 sm:!gap-5 md:!gap-6 !text-center">
-          <h1 className="!text-[1.75rem] min-[480px]:!text-[2rem] !leading-[1.15] !font-extrabold !text-[var(--text-color)] sm:!text-[2.75rem] md:!text-[3.5rem] lg:!text-[4rem] xl:!text-[4.5rem]">
+      <div
+        className="!absolute !inset-0 !bg-cover !bg-center !bg-no-repeat"
+        style={{ backgroundImage: "url('/hero.png')" }}
+        aria-hidden
+      />
+      <div
+        className="!absolute !inset-0"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(15, 17, 20, 0.58) 0%, rgba(15, 17, 20, 0.45) 100%)",
+        }}
+        aria-hidden
+      />
+      <div
+        className="!absolute !inset-x-0 !bottom-0 !h-16 sm:!h-20 md:!h-24 !pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to top, #ffffff 0%, rgba(255, 255, 255, 0.5) 40%, transparent 100%)",
+        }}
+        aria-hidden
+      />
+
+      <div className="!relative !w-full !max-w-[1400px] !mx-auto !px-4 sm:!px-6 lg:!px-8">
+        <div className="!flex !flex-col !items-center !text-center !gap-4 sm:!gap-5 md:!gap-6 !w-full !max-w-[min(100%,920px)] lg:!max-w-[980px] !mx-auto">
+          <FadeInFromBottom>
+            <span className="!inline-flex !items-center !gap-2 !px-3 !py-1.5 !rounded-full !bg-white/10 !border !border-white/20 !backdrop-blur-md !text-[11px] sm:!text-xs !font-semibold !uppercase !tracking-[0.18em] !text-[#ffcc80]">
+              {siteName} · Spring collection
+            </span>
+          </FadeInFromBottom>
+
+          <h1
+            id="home-hero-title"
+            className="!text-[1.875rem] sm:!text-[2.5rem] md:!text-[3rem] lg:!text-[3.25rem] !font-bold !leading-[1.08] !text-white !text-balance"
+          >
             <FadeInFromBottom>
-              Make your interior more minimalistic & modern
+              Minimal furniture for spaces that breathe.
             </FadeInFromBottom>
           </h1>
 
-          <p className="!text-base sm:!text-lg md:!text-xl lg:!text-2xl !w-full sm:!w-[90%] md:!w-[75%] lg:!w-[60%] !font-light !text-[var(--description-color)]">
-            <FadeInFromBottom>
-              Turn your room with {siteName} into a lot more minimalist and modern
-              with ease and speed
-            </FadeInFromBottom>
+          <p className="!text-sm sm:!text-base md:!text-lg !text-white/85 !leading-relaxed !w-full !max-w-[760px]">
+            <FadeInFromBottom>{siteDescription}</FadeInFromBottom>
           </p>
+
           <FadeInLeftWhenVisible>
-            <input
-              type="text"
-              placeholder="🔍  Search for products..."
-              className="!w-full !max-w-[280px] sm:!max-w-[320px] !px-4 sm:!px-5 !py-2.5 sm:!py-3 !rounded-[25px] !text-sm sm:!text-base !outline-none !transition-all !duration-300 !bg-[var(--blur-inherit)] focus:!border-[#96999c] focus:!ring-[3px] focus:!ring-[rgba(25,118,210,0.15)] placeholder:!text-[var(--description-color)]"
-            />
+            <div className="!flex !flex-row !flex-wrap !gap-3 !justify-center !w-full">
+              <Link
+                href="/products"
+                className="!inline-flex !items-center !justify-center !gap-2 !px-6 !py-3 !rounded-full !bg-[#E58411] !text-white !font-semibold !text-sm sm:!text-base !no-underline hover:!bg-[#d0770f] !transition-colors"
+              >
+                Shop collection
+                <ArrowForwardIcon className="!text-[18px]" />
+              </Link>
+              <Link
+                href="/about"
+                className="!inline-flex !items-center !justify-center !px-6 !py-3 !rounded-full !border !border-white/35 !text-white !font-medium !text-sm sm:!text-base !no-underline hover:!bg-white/10 !transition-colors"
+              >
+                Our story
+              </Link>
+            </div>
           </FadeInLeftWhenVisible>
+
+          <FadeInFromBottom>
+            <ul className="!grid !grid-cols-3 !gap-3 sm:!gap-8 md:!gap-12 !w-full !max-w-[min(100%,520px)] sm:!max-w-xl md:!max-w-2xl !pt-1">
+              {heroStats.map((stat) => (
+                <li key={stat.label} className="!min-w-0 !px-1">
+                  <p className="!text-lg sm:!text-xl !font-bold !text-white !whitespace-nowrap">
+                    {stat.value}
+                  </p>
+                  <p className="!text-[10px] sm:!text-xs !text-white/60 !uppercase !tracking-wide !leading-snug">
+                    {stat.label}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </FadeInFromBottom>
         </div>
       </div>
     </section>

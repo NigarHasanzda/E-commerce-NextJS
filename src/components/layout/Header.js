@@ -36,7 +36,7 @@ const Header = () => {
 
   return (
     <header
-      className={`!fixed !top-0 !w-full !z-[1000] !transition-all !duration-300
+      className={`!fixed !top-0 !left-0 !right-0 !w-full !max-w-[100%] !z-[1000] !transition-all !duration-300
         ${onDarkHeader ? "!bg-[#1F2124] !shadow-lg" : "!bg-transparent"}
       `}
     >

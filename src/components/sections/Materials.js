@@ -6,8 +6,8 @@ import { siteName } from "@/lib/site";
 
 const Materials = () => {
   return (
-    <section className="!w-full !py-12 sm:!py-16 md:!py-20 lg:!py-28 !px-4 sm:!px-6 lg:!px-8 !bg-white">
-      <div className="!w-full !max-w-[1400px] !mx-auto !grid !grid-cols-1 lg:!grid-cols-2 !gap-10 md:!gap-12 lg:!gap-16 !items-center">
+    <section className="!w-full !min-w-0 !py-12 sm:!py-16 md:!py-20 lg:!py-28 !px-4 sm:!px-6 lg:!px-8 !bg-white !overflow-x-clip">
+      <div className="!w-full !max-w-[1400px] !mx-auto !grid !grid-cols-1 lg:!grid-cols-2 !gap-10 md:!gap-12 lg:!gap-16 !items-center !min-w-0">
         <div className="!text-center lg:!text-left">
           <FadeInLeftWhenVisible>
             <p className="!text-[#E58411] !tracking-[0.2em] !uppercase !text-xs sm:!text-sm !font-medium !mb-3 sm:!mb-4">
@@ -34,8 +34,8 @@ const Materials = () => {
           </FadeInLeftWhenVisible>
         </div>
 
-        <div className="!relative !flex !flex-col md:!flex-row !gap-4 sm:!gap-6 !items-center !w-full">
-          <div className="!flex !flex-row md:!flex-col !gap-3 sm:!gap-4 !w-full md:!w-auto">
+        <div className="!relative !flex !flex-col md:!flex-row !gap-4 sm:!gap-6 !items-center !w-full !min-w-0 !max-w-full">
+          <div className="!flex !flex-row md:!flex-col !gap-3 sm:!gap-4 !w-full !min-w-0 md:!w-auto">
             <FadeInLeftWhenVisible>
               <img
                 src="/img1.png"

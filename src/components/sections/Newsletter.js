@@ -50,8 +50,8 @@ const Newsletter = () => {
           </FadeInLeftWhenVisible>
 
           <FadeInRightWhenVisible>
-            <div className="!relative !w-full !max-w-lg !mx-auto lg:!max-w-none">
-              <div className="!absolute !-top-3 !-right-3 sm:!-top-4 sm:!-right-4 !w-full !h-full !bg-[#f4f4f4] !rounded-[20px] sm:!rounded-[24px] !z-0 !hidden sm:!block lg:!block" />
+            <div className="!relative !w-full !max-w-lg !mx-auto lg:!max-w-none !overflow-hidden !rounded-[20px] sm:!rounded-[24px]">
+              <div className="!absolute !inset-2 sm:!inset-3 !translate-x-2 !translate-y-2 !bg-[#f4f4f4] !rounded-[20px] sm:!rounded-[24px] !z-0 !hidden sm:!block" />
               <div className="!relative !z-[1] !bg-[#F7F7F7] !rounded-[20px] sm:!rounded-[24px] !p-6 sm:!p-8 md:!p-10 !shadow-sm">
                 <FadeInFromBottom>
                   {submitted ? (

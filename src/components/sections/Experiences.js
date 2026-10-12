@@ -7,8 +7,8 @@ const Experiences = () => {
   return (
     <section className="!w-full !py-12 sm:!py-16 md:!py-20 lg:!py-24 !px-4 sm:!px-6 lg:!px-8 !bg-white">
       <div className="!w-full !max-w-[1400px] !mx-auto !flex !flex-col lg:!flex-row !items-center !justify-between !gap-10 md:!gap-12 lg:!gap-16">
-        <div className="!relative !w-full lg:!w-[48%] !max-w-[560px] lg:!max-w-none !mx-auto lg:!mx-0">
-          <div className="!absolute !top-3 !left-3 sm:!top-5 sm:!left-5 md:!top-8 md:!left-8 !w-full !h-full !bg-[#f4f4f4] !rounded-[16px] sm:!rounded-[24px] !z-[0]" />
+        <div className="!relative !w-full lg:!w-[48%] !max-w-[560px] lg:!max-w-none !mx-auto lg:!mx-0 !overflow-hidden !rounded-[16px] sm:!rounded-[24px]">
+          <div className="!absolute !inset-3 sm:!inset-5 md:!inset-8 !bg-[#f4f4f4] !rounded-[16px] sm:!rounded-[24px] !z-[0]" />
           <FadeInLeftWhenVisible>
             <img
               src="/Rectangle.png"

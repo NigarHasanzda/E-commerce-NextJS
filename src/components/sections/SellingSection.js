@@ -14,8 +14,8 @@ const SellingSection = () => {
         <h2 className="!text-center !text-xl sm:!text-2xl md:!text-[1.75rem] lg:!text-[30px] !font-bold !mb-6 sm:!mb-8">
           Best Selling Product
         </h2>
-        <div className="!flex !justify-center !mb-8 sm:!mb-12 md:!mb-14 !-mx-1">
-          <div className="!bg-[#EEEEEE] !rounded-full !p-1 !flex !gap-1 sm:!gap-2 !max-w-full !overflow-x-auto [&::-webkit-scrollbar]:!hidden">
+        <div className="!flex !justify-center !mb-8 sm:!mb-12 md:!mb-14 !w-full !min-w-0">
+          <div className="!bg-[#EEEEEE] !rounded-full !p-1 !flex !gap-1 sm:!gap-2 !max-w-full !overflow-x-auto [&::-webkit-scrollbar]:!hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {bestSellingCategories.map((item) => (
               <button
                 key={item}

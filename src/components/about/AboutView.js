@@ -18,8 +18,8 @@ const AboutView = () => {
       <section className="!w-full !py-12 md:!py-16 !px-4 !bg-white">
         <div className="!max-w-[1400px] !mx-auto !grid !grid-cols-1 lg:!grid-cols-2 !gap-12 !items-center">
           <FadeInLeftWhenVisible>
-            <div className="!relative">
-              <div className="!absolute !top-5 !left-5 !w-full !h-full !bg-[#f4f4f4] !rounded-[24px]" />
+            <div className="!relative !overflow-hidden !rounded-[24px]">
+              <div className="!absolute !inset-4 sm:!inset-5 !bg-[#f4f4f4] !rounded-[24px]" />
               <img
                 src="/Rectangle.png"
                 alt="Panto interior styling"

@@ -77,7 +77,7 @@ const ProductsPageHeader = () => {
           </div>
 
           <div className="!hidden lg:!flex !justify-end !relative !-my-2">
-            <div className="!absolute !top-4 !right-4 !w-full !max-w-[220px] !h-full !bg-white/5 !rounded-[20px] !border !border-white/10" />
+            <div className="!absolute !inset-4 !max-w-[220px] !ml-auto !bg-white/5 !rounded-[20px] !border !border-white/10" />
             <img
               src="/chair2.png"
               alt=""

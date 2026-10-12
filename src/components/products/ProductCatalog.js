@@ -9,6 +9,7 @@ import {
   productMaterials,
   products,
 } from "@/data/products";
+import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 
 const sortLabels = {
@@ -19,7 +20,9 @@ const sortLabels = {
 };
 
 const ProductCatalog = () => {
-  const [search, setSearch] = useState("");
+  const searchParams = useSearchParams();
+  const initialSearch = searchParams.get("search") ?? "";
+  const [search, setSearch] = useState(initialSearch);
   const [category, setCategory] = useState("all");
   const [material, setMaterial] = useState("all");
   const [sort, setSort] = useState("default");

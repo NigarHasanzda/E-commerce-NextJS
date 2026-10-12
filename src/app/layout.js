@@ -96,7 +96,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 w-full min-w-0 overflow-x-clip">{children}</main>
         <Footer />
       </body>
     </html>

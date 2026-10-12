@@ -11,7 +11,7 @@ const socialIcons = {
 
 const Footer = () => {
   return (
-    <footer className="bg-[#F7F7F7] font-sans !important !px-4 sm:!px-6 md:!px-12 lg:!px-[150px] !py-8 sm:!py-10 md:!py-[40px] !w-[100%]">
+    <footer className="bg-[#F7F7F7] font-sans !important !px-4 sm:!px-6 md:!px-12 lg:!px-[150px] !py-8 sm:!py-10 md:!py-[40px] !w-full !max-w-[100%] !overflow-x-clip">
       <div className="!max-w-[1400px] !mx-auto !h-fit">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 md:gap-12 mb-12 sm:mb-16 md:mb-20">
           <div className="sm:col-span-2 md:col-span-1">

@@ -28,8 +28,8 @@ const HowItWorks = () => {
 
         <div className="!grid !grid-cols-1 lg:!grid-cols-2 !gap-8 md:!gap-10 lg:!gap-14 !items-center !mb-8 sm:!mb-12 md:!mb-14">
           <FadeInLeftWhenVisible>
-            <div className="!relative !w-full !max-w-[420px] !mx-auto lg:!max-w-none">
-              <div className="!absolute !top-4 !left-4 sm:!top-6 sm:!left-6 md:!top-8 md:!left-8 !w-full !h-full !bg-[#EEEEEE] !rounded-[20px] sm:!rounded-[24px] !z-0" />
+            <div className="!relative !w-full !max-w-[420px] !mx-auto lg:!max-w-none !overflow-hidden !rounded-[20px] sm:!rounded-[24px]">
+              <div className="!absolute !inset-4 sm:!inset-6 md:!inset-8 !bg-[#EEEEEE] !rounded-[20px] sm:!rounded-[24px] !z-0" />
               <img
                 src="/chair2.png"
                 alt="Modern chair from Panto collection"
